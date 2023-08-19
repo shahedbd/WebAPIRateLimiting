@@ -1,0 +1,37 @@
+﻿WebAPI.GenericCRUD
+E:\gitClone\TMP_3\API_Pub\GenericCRUD\publish
+https://localhost:5001/swagger/index.html
+https://localhost:81/api/Branch/GetAllBranches
+
+https://localhost:81/api/Branch/GetBranchById/1
+
+
+GetAllBranches
+string _subURL = "Branch/GetAllBranches";
+var members = await _iAPIClientService.GetAll(_subURL);
+
+GetBranchById
+_subURL = "Branch/GetBranchById/";
+var _GetById = await _iAPIClientService.GetById(1, _subURL);
+
+Create
+Branch _Branch = new()
+{
+    Name = "Test 01 :" + DateTime.Now,
+    Description = "TBD"
+};
+_iAPIClientService.Create(_Branch, _subURL);
+
+Update
+string _subURL = "Branch/UpdateBranch";
+Branch _Branch = new()
+{
+    Id= 6,
+    Name = "Update Test 01 :" + DateTime.Now,
+    Description = "Update TBD"
+};
+_iAPIClientService.Update(_Branch, _subURL);
+
+Delete
+string _subURL = "Branch/DeleteBranch/";
+_iAPIClientService.Delete(6, _subURL);
